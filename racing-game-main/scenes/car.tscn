@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/car_controller.gd" id="1_car"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(2.2, 0.5, 4.8)
+
+[node name="Car" type="VehicleBody3D"]
+mass = 200.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.3, 0)
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_car")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("BoxShape3D_1")
+
+[node name="CarBody" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+
+[node name="WheelFL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0.0, 1.5)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.3
+wheel_rest_length = 0.08
+suspension_stiffness = 150.0
+suspension_travel = 0.06
+damping_compression = 8.0
+damping_relaxation = 10.0
+wheel_friction_slip = 3.5
+
+[node name="WheelFR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.0, 1.5)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.3
+wheel_rest_length = 0.08
+suspension_stiffness = 150.0
+suspension_travel = 0.06
+damping_compression = 8.0
+damping_relaxation = 10.0
+wheel_friction_slip = 3.5
+
+[node name="WheelRL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0.0, -1.5)
+use_as_traction = true
+use_as_steering = false
+wheel_radius = 0.3
+wheel_rest_length = 0.08
+suspension_stiffness = 150.0
+suspension_travel = 0.06
+damping_compression = 8.0
+damping_relaxation = 10.0
+wheel_friction_slip = 3.0
+
+[node name="WheelRR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.0, -1.5)
+use_as_traction = true
+use_as_steering = false
+wheel_radius = 0.3
+wheel_rest_length = 0.08
+suspension_stiffness = 150.0
+suspension_travel = 0.06
+damping_compression = 8.0
+damping_relaxation = 10.0
+wheel_friction_slip = 3.0
+
+[node name="ChaseCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 8)
+current = true
